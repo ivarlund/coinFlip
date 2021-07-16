@@ -1,0 +1,338 @@
+html {
+    font: 150% Roboto, sans-serif;
+}
+
+.header {
+    width: 1000px;
+    margin: 0 auto 10px;
+    text-align: center;
+    background-image: url("/5/Images/coinfliphead.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0px 0px 3px rgba(34, 34, 34, 0.6);
+}
+
+.header h1 {
+    margin: 0;
+    font-weight: 900;
+    letter-spacing: 5px;
+    color: whitesmoke;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+}
+
+.topbar {
+    padding: 5px;
+    height: 35px;
+    background-color: goldenrod;
+    border-bottom: 3px solid darkgray;
+}
+
+.topbar img {
+    position: relative;
+    height: 35px;
+    width: 35px;
+    margin: auto 0;
+    transition-duration: 0.5s;
+    transition-property: transform;
+}
+
+.topbar img:hover {
+    transform: rotateX(180deg);
+}
+
+.topbar img.left {
+    float: left;
+}
+
+.topbar img.right {
+    float: right;
+}
+
+.container {
+    box-shadow: 0px 0px 3px rgba(44, 44, 44, 0.6);
+    display: flex;
+    min-height: 80vh;
+    color: hsl(0, 2%, 35%);
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.container h1 {
+    text-align: center;
+}
+
+.content {
+    float: right;
+    width: 840px;
+    padding: 0 10px;
+}
+
+.content.center {
+    text-align: center;
+}
+
+.article {
+    padding: 0 5px;
+}
+
+.sidebar {
+    float: left;
+    width: 150px;
+    background-color: goldenrod;
+    box-shadow: 1px 0px 3px rgba(34, 34, 34, 0.6);
+}
+
+.sidebar ul {
+    list-style-type: none;
+    text-align: center;
+    padding: 0;
+}
+
+.sidebar ul li {
+    font-weight: 900;
+    display: inline-block;
+}
+
+.sidebar a {
+    text-decoration: none;
+    font-size: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: whitesmoke;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+}
+
+.sidebar a:visited {
+    color: whitesmoke;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+}
+
+.sidebar a:hover {
+    color: hsl(181, 45%, 38%);
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    cursor: pointer;
+}
+
+.coinImg.head {
+    background-repeat: no-repeat;
+    background-size: 60px 60px;
+    background-image: url("/5/Images/coinIconBack.png");
+    transition: transform 1s, background-image 1s;
+}
+
+.coinImg.tail {
+    background-repeat: no-repeat;
+    background-size: 60px 60px;
+    background-image: url("/5/Images/coinIcon.png");
+    transition: transform 1s, background-image 1s;
+}
+
+.coinImg:hover {
+    transform: rotateX(180deg);
+}
+
+.coinImg {
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.coinFlipHead {
+    background-repeat: no-repeat;
+    background-image: url("/5/Images/coinIcon.png");
+    background-size: 60px 60px;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    transform: none;
+    transition: transform 1s, background-image 1s;
+}
+
+.coinFlipTail {
+    background-repeat: no-repeat;
+    background-image: url("/5/Images/coinIconBack.png");
+    background-size: 60px 60px;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    transform: none;
+    transition: transform 1s, background-image 1s;
+}
+
+.coinImg:hover .coinFlipHead {
+    background: url("/5/Images/coinIconBack.png");
+    background-size: 60px 60px;
+    transform: rotateX(180deg);
+}
+
+.coinImg:hover .coinFlipTail {
+    background: url("/5/Images/coinIcon.png");
+    background-size: 60px 60px;
+    transform: rotateX(180deg);
+}
+
+#coinGuessDiv {
+    text-align: center;
+    padding: 10px;
+}
+
+#coinFlipDiv {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+#coinFlip {
+    width: 220px;
+    height: 220px;
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 220px;
+    transform-style: preserve-3d;
+}
+
+#coinFlip .heads, #coinFlip .tails {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    width: 220px;
+    height: 220px;
+}
+
+#coinFlip .heads {
+    transform: translateZ(1px);
+    border-radius: 110px;
+    background-image: url("/5/Images/coinIcon.png");
+    display: block;
+}
+
+#coinFlip .tails {
+    transform: translateZ(-1px) rotateX(180deg);
+    border-radius: 110px;
+    background-image: url("/5/Images/coinIconBack.png");
+    display: block;
+}
+
+#coinFlip.flipTails {
+    animation: flipTails 5s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+#coinFlip.flipHeads {
+    animation: flipHeads 5s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes flipTails {
+    from {
+        transform: rotateX(0);
+    }
+    to {
+        transform: rotateX(1980deg);
+    }
+}
+
+@keyframes flipHeads {
+    from {
+        transform: rotateX(0);
+    }
+    to {
+        transform: rotateX(2160deg);
+    }
+}
+
+.button {
+    font-size: 100%;
+    font-weight: 700;
+    padding: 10px 20px;
+    margin: 5px;
+    color: whitesmoke;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px rgba(34, 34, 34, 0.6);
+    background-color: goldenrod;
+}
+
+.button:hover {
+    background-color: hsl(181, 45%, 38%);
+    cursor: pointer;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.label {
+    display: inline-block;
+    min-width: 250px;
+}
+
+.input {
+    display: inline-block;
+    font-size: 22px;
+    margin: 5px;
+    padding: 10px;
+    border: 2px solid goldenrod;
+    border-radius: 5px;
+}
+
+.input:focus {
+    outline: none;
+    border: 2px solid hsl(181, 45%, 38%);
+}
+
+.input[type=number]::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+}
+
+.footer {
+    display: table;
+    width: 1000px;
+    height: 50px;
+    margin: 10px auto 0;
+    text-align: center;
+    background-color: goldenrod;
+    box-shadow: 0px 0px 3px rgba(34, 34, 34, 0.6);
+}
+
+.footer h4 {
+    margin: 0;
+    padding: 10px;
+    color: whitesmoke;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+}
+
+@media only screen and (max-width: 1000px) {
+    
+    .header {
+        width: 100%;
+    }
+
+    .container {
+        display: block;
+        min-height: auto;
+        width: 100%;
+    }
+    
+    section {
+        padding: 0 15px;
+    }
+
+    .sidebar {
+        display: block;
+        width: 100%;
+    }
+
+    .content {
+        display: block;
+        width: 100%;
+    }
+
+    .footer {
+        display: table;
+        width: 100%;
+    }
+}
